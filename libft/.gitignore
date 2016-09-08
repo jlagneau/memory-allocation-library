@@ -1,0 +1,8 @@
+.obj/
+.dep/
+libft.a
+libft_debug.a
+tests/.obj/
+tests/.dep/
+tests/test
+tests/debug
