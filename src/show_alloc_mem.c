@@ -6,7 +6,7 @@
 /*   By: jlagneau <jlagneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 09:59:39 by jlagneau          #+#    #+#             */
-/*   Updated: 2016/09/08 14:45:40 by jlagneau         ###   ########.fr       */
+/*   Updated: 2016/09/08 15:52:04 by jlagneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static void		show_large(t_alloc *large)
 {
-	ft_putstr("LARGE : 0x");
+	ft_putstr("\033[32mLARGE\033[0m : 0x");
 	ft_putnbr_base((unsigned long)large, 16);
 	ft_putendl("");
 }
 
 static void		show_small(t_alloc *small)
 {
-	ft_putstr("SMALL : 0x");
+	ft_putstr("\033[32mSMALL\033[0m : 0x");
 	ft_putnbr_base((unsigned long)small, 16);
 	ft_putendl("");
 }
 
 static void 	show_tiny(t_alloc *tiny)
 {
-	ft_putstr("TINY : 0x");
+	ft_putstr("\033[32mTINY\033[0m  : 0x");
 	ft_putnbr_base((unsigned long)tiny, 16);
 	ft_putendl("");
 }
