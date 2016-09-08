@@ -6,7 +6,7 @@
 #    By: jlagneau <jlagneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/21 08:29:58 by jlagneau          #+#    #+#              #
-#    Updated: 2016/09/08 15:33:35 by jlagneau         ###   ########.fr        #
+#    Updated: 2016/09/08 15:56:02 by jlagneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,14 +51,14 @@ $(NAME).so: CFLAGS += -O3
 $(NAME).so: $(OBJS)
 	@-git submodule update --init --recursive
 	@make -C $(FT_PATH)
-	$(CC) -shared -o $@ $(LDFLAGS) $^
+	$(CC) -shared -o $@ $^ $(LDFLAGS)
 	ln -sf $@ $(NAME)_$(HOSTTYPE).so
 
 $(NAME)_debug.so: CFLAGS += -g3
 $(NAME)_debug.so: $(DEB_OBJS)
 	@-git submodule update --init --recursive
 	@make -C $(FT_PATH) debug
-	$(CC) -shared -o $@ $(LDFLAGS) $^
+	$(CC) -shared -o $@ $^ $(LDFLAGS)
 	ln -sf $@ $(NAME)_debug_$(HOSTTYPE).so
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
