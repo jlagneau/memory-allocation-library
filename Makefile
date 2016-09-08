@@ -6,7 +6,7 @@
 #    By: jlagneau <jlagneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/21 08:29:58 by jlagneau          #+#    #+#              #
-#    Updated: 2016/09/08 14:30:39 by jlagneau         ###   ########.fr        #
+#    Updated: 2016/09/08 15:33:35 by jlagneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM        = rm -rf
 CFLAGS    = -Wall -Wextra -Werror -pedantic -DLIBFT_MALLOC_INTERNAL -fPIC
 CPPFLAGS  = -I$(HEAD_PATH) -I$(FT_PATH)include
 DEPSFLAGS = -MMD -MF"$(DEPS_PATH)$(notdir $(@:.o=.d))"
-LDFLAGS   = -Wl,--whole-archive -fPIC -L$(FT_PATH) -lft -Wl,--no-whole-archive
+LDFLAGS   = -L$(FT_PATH) -lft
 
 # OS
 HOSTTYPE := $(shell uname -m)_$(shell uname -s)
