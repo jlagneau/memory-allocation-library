@@ -15,21 +15,21 @@
 static void		show_large(t_alloc *large)
 {
 	ft_putstr("\033[32mLARGE\033[0m : 0x");
-	ft_putnbr_base((unsigned long)large, 16);
+	ft_putnbr_base((unsigned long)large, BASE_HEX_UPPER);
 	ft_putendl("");
 }
 
 static void		show_small(t_alloc *small)
 {
 	ft_putstr("\033[32mSMALL\033[0m : 0x");
-	ft_putnbr_base((unsigned long)small, 16);
+	ft_putnbr_base((unsigned long)small, BASE_HEX_UPPER);
 	ft_putendl("");
 }
 
-static void 	show_tiny(t_alloc *tiny)
+static void		show_tiny(t_alloc *tiny)
 {
 	ft_putstr("\033[32mTINY\033[0m  : 0x");
-	ft_putnbr_base((unsigned long)tiny, 16);
+	ft_putnbr_base((unsigned long)tiny, BASE_HEX_UPPER);
 	ft_putendl("");
 }
 

@@ -50,24 +50,24 @@ DEB_DEPS  = $(addprefix $(DEPS_PATH), $(notdir $(DEB_OBJS:.o=.d)))
 $(NAME).so: CFLAGS += -O3
 $(NAME).so: $(OBJS)
 	@-git submodule update --init --recursive
-	@make -C $(FT_PATH)
+	@env CFLAGS="-Wall -Wextra -Werror -fPIC" make -C $(FT_PATH)
 	$(CC) -shared -o $@ $^ $(LDFLAGS)
 	ln -sf $@ $(NAME)_$(HOSTTYPE).so
 
 $(NAME)_debug.so: CFLAGS += -g3
 $(NAME)_debug.so: $(DEB_OBJS)
 	@-git submodule update --init --recursive
-	@make -C $(FT_PATH) debug
+	@env CFLAGS="-Wall -Wextra -Werror -fPIC" make -C $(FT_PATH) debug
 	$(CC) -shared -o $@ $^ $(LDFLAGS)
 	ln -sf $@ $(NAME)_debug_$(HOSTTYPE).so
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH) $(DEPS_PATH)
-	$(CC) $(CPPFLAGS) $(DEPSFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPSFLAGS) -c $< -o $@
 
 $(OBJS_PATH)%_debug.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH) $(DEPS_PATH)
-	$(CC) $(CPPFLAGS) $(DEPSFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPSFLAGS) -c $< -o $@
 
 debug: $(NAME)_debug.so
 
