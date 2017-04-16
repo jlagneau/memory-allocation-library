@@ -13,6 +13,10 @@
 # Variables
 NAME      = libft_malloc
 
+# Exec
+CC       ?= gcc
+RM        = rm -rf
+
 # Libraries
 FT_PATH   = libft/
 
@@ -22,9 +26,6 @@ HEAD_PATH = include/
 
 OBJS_PATH = .obj/
 DEPS_PATH = .dep/
-
-# Exec
-RM        = rm -rf
 
 # Flags
 CFLAGS    = -Wall -Wextra -Werror -pedantic -DLIBFT_MALLOC_INTERNAL -fPIC
@@ -37,11 +38,12 @@ HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 
 # Files
 SRCS     := $(shell find src -type f)
-DEPS      = $(addprefix $(DEPS_PATH), $(notdir $(SRCS:.c=.d)))
+
 OBJS      = $(addprefix $(OBJS_PATH), $(notdir $(SRCS:.c=.o)))
+DEPS      = $(addprefix $(DEPS_PATH), $(notdir $(SRCS:.c=.d)))
 
 DEB_OBJS  = $(OBJS:.o=_debug.o)
-DEB_DEPS  = $(addprefix $(DEPS_PATH), $(notdir $(DEB_OBJS:.o=.d)))
+DEB_DEPS  = $(DEBS:.d=_debug.d)
 
 # Phony
 .PHONY: all clean fclean norme re redebug
@@ -70,9 +72,6 @@ $(OBJS_PATH)%_debug.o: $(SRCS_PATH)%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPSFLAGS) -c $< -o $@
 
 debug: $(NAME)_debug.so
-
-norme:
-	@norminette ./**/*.{h,c}
 
 all: $(NAME).so
 
